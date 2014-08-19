@@ -1,0 +1,26 @@
+---
+
+- debug: msg={{ ansible_ssh_host }}
+
+- ping:
+  register: first_ping
+  ignore_errors: True
+
+- debug: msg="{{ first_ping }}"
+
+- pause: seconds=30
+  #when: first_ping|failed
+  when: first_ping.changed and '"error" in first_ping.stderr'
+
+
+- name: ping
+  ping:
+
+- name: rerun setup
+  setup:
+
+- name: get hostname
+  command: hostname
+  register: hostname
+
+- debug: msg="{{ hostname.stdout }}"

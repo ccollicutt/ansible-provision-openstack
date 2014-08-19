@@ -1,6 +1,6 @@
 ---
 
-- name: ensure instances exist in openstack
+- name: ensure instance exists in openstack
   nova_compute:
     state: present
     login_username: "{{ os_username }}"
@@ -13,3 +13,28 @@
     key_name: "{{ os_key_name }}"
     flavor_id: "{{ flavor_id }}"
     security_groups: default
+  register: nova
+
+#- debug: msg="{{ nova }}"
+
+#- debug: msg="{{ nova.info }}"
+
+#- debug: msg="{{nova.name}}"
+
+#- debug: msg="{{ nova.info.addresses.cybera[0].addr }}"
+
+- name: add the instance to the in-memory inventory
+  add_host: name={{ inventory_hostname }}
+
+- pause: seconds=30
+  when: nova.changed
+
+#ansible_ssh_host={{ nova.info.addresses.cybera[0].addr }}
+
+- set_fact: ansible_ssh_host={{ nova.info.addresses.cybera[0].addr }}
+
+#- debug: msg="{{ inventory_hostname }} {{ ansible_default_ipv4.address }}"
+
+#- debug: msg="{{ ansible_ssh_host }}"
+
+#- debug: var=hostvars[inventory_hostname]

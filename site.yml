@@ -2,6 +2,12 @@
 
 - hosts: openstack_instances
   connection: local
+  serial: True
   sudo: false
   roles:
     - openstack_instances
+
+- hosts: all
+  gather_facts: no
+  roles:
+    - common
