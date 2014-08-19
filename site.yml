@@ -1,0 +1,7 @@
+---
+
+- hosts: openstack_instances
+  connection: local
+  sudo: false
+  roles:
+    - openstack_instances

@@ -1,0 +1,8 @@
+os_username: ""
+os_password: ""
+os_tenant_name: ""
+os_auth_url: ""
+os_region_name: ""
+# trusty
+os_image_id: ""
+os_key_name: ""

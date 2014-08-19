@@ -1,0 +1,13 @@
+[openstack_instances]
+lb flavor_id=1
+#app flavor_id=2
+#db flavor_id=2
+
+[load_balancer]
+lb
+
+[application_server]
+app
+
+[database_server]
+db

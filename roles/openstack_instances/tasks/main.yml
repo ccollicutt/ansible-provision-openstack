@@ -1,0 +1,15 @@
+---
+
+- name: ensure instances exist in openstack
+  nova_compute:
+    state: present
+    login_username: "{{ os_username }}"
+    login_password: "{{ os_password }}"
+    login_tenant_name: "{{ os_tenant_name }}"
+    auth_url: "{{ os_auth_url }}"
+    region_name: "{{ os_region_name }}"
+    name: "{{ inventory_hostname }}"
+    image_id: "{{ os_image_id }}"
+    key_name: "{{ os_key_name }}"
+    flavor_id: "{{ flavor_id }}"
+    security_groups: default
