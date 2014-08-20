@@ -31,7 +31,7 @@
 
 #ansible_ssh_host={{ nova.info.addresses.cybera[0].addr }}
 
-- set_fact: ansible_ssh_host={{ nova.info.addresses.cybera[0].addr }}
+- set_fact: ansible_ssh_host={{ nova.info.addresses.private[0].addr }}
 
 #- debug: msg="{{ inventory_hostname }} {{ ansible_default_ipv4.address }}"
 
