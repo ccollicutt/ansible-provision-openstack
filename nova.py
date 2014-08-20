@@ -32,7 +32,6 @@ def main(args):
   inventory['_meta']['hostvars'] = {}
 
   for line in f.readlines():
-    flavor = None
     if line == "[openstack_instances]\n":
       group = line.replace("[", "")
       group = group.replace("]", "")
