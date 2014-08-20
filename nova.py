@@ -26,10 +26,6 @@ def main(args):
 
   f = open('hosts')
 
-  # setup groups to start, must have at least 'undefined'
-  # we'll add groups to the inventory
-  groups = ['undefined', 'openstack_instances']
-
   # initialize the inventory
   inventory = {}
   inventory['_meta'] = {}
@@ -41,19 +37,17 @@ def main(args):
       group = line.replace("[", "")
       group = group.replace("]", "")
       group = group.replace("\n", "")
-      groups.append(group)
     # FIXME: test cases
     elif line.startswith("[") or line == "\n":
       break
     else:
       server = line.split()
       name = server[0]
-      # FIXME: Ugly
+      # FIXME
       # flavor_id=1
       flavor = server[1].split("=")[1]
       # group=somegroup
       group = server[2].split("=")[1]
-      groups.append(group)
 
       add_host(vm_name=name, group=group, inventory=inventory )
       add_host(vm_name=name, group='openstack_instances', inventory=inventory)
