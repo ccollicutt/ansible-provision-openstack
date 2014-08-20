@@ -1,5 +1,13 @@
 ---
 
+#
+# Some of what is below is not necessary if pausing for a while after vm
+# creation--it was just an attempt to be a little smarter with making sure
+# the vm is actually up before trying to setup or ping. The rerun of setup
+# coincides with gather_facts set to no in site.yml. So if you remove setup
+# from here, then remove gather_facts: no in site.yml as well.
+#
+
 - debug: msg={{ ansible_ssh_host }}
 
 - ping:
@@ -11,7 +19,6 @@
 - pause: seconds=30
   #when: first_ping|failed
   when: first_ping.changed and '"error" in first_ping.stderr'
-
 
 - name: ping
   ping:

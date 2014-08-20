@@ -11,3 +11,7 @@ curtis$ vi roles/openstack_instances/tasks/main.yml # change set_fact line to be
 curtis$ ansible-playbook -i nova.py site.yml
 # done!
 ```
+
+##Todo
+
+* Pull groups from OpenStack metadata (like the official nova.py script does)
