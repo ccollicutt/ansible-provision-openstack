@@ -22,10 +22,6 @@ def add_host(vm_name, group, inventory, flavor=None):
     if flavor:
       inventory['_meta']['hostvars'][vm_name]['flavor_id'] = flavor
 
-
-#def get_ip():
-
-
 def main(args):
 
   f = open('hosts')
